@@ -1,0 +1,740 @@
+1. Table creation 
+
+
+
+
+ create table emp
+(
+
+
+
+id int auto_increment,
+ name varchar(60),
+ gmail varchar(60),
+ primary key (id)
+)
+
+2.insert data into table
+
+insert into emp
+
+values
+(
+1,
+'kiran',
+'k@gmail.com'
+
+),
+
+(
+2,
+'kiran1',
+'k1@gmail.com'
+
+)
+
+
+3.alter table to add new column
+
+
+alter table  emp
+add marks varchar(60)
+
+4.alter table to add new column
+
+alter table  emp
+change marks mar varchar(60)
+
+5.alter table drop a column 
+
+alter table  emp
+drop mar 
+
+6.Update a table
+
+
+update emp set name="k" where id=1
+
+
+
+7.delete a table 
+
+
+delete from emp where id=1
+
+
+
+
+8.Aggregate
+
+create table agg(
+
+id int auto_increment,
+
+name varchar(60),
+
+age int,
+
+marks varchar(60),
+
+gender varchar(60),
+
+primary	key(id)
+
+
+
+)
+
+
+9.insert data
+
+
+
+insert into agg(
+
+
+
+name ,
+
+age ,
+
+marks ,
+
+gender
+
+)
+
+
+values
+(
+'emp1',
+18,
+98,
+'male'
+
+),
+
+
+(
+'emp2',
+17,
+68,
+'female'
+
+),
+
+
+(
+'emp3',
+19,
+79,
+'male'
+
+),
+
+
+
+(
+'emp4',
+18,
+77,
+'male'
+
+),
+
+
+(
+'emp5',
+18,
+74,
+'male'
+
+),
+
+
+(
+'emp6',
+17,
+80,
+'female'
+
+),
+
+(
+'emp7',
+19,
+72,
+'male'
+
+),
+
+(
+'emp8',
+19,
+77,
+'female'
+
+),
+
+(
+'emp9',
+18,
+94,
+'female'
+
+),
+
+(
+'emp10',
+18,
+94,
+'male'
+
+)
+
+
+10.count students
+
+
+
+select count(*) as noof
+from agg
+
+
+11.avg
+
+select avg(marks) as noofm
+from agg
+
+
+12.max
+
+select max(marks) as noofm
+from agg where age=18
+
+13.distinct
+
+
+select distinct(marks) as noofm
+from agg where age=18
+
+
+
+wild cards
+
+select *
+from agg where name like "___1%"
+
+14.joints
+
+
+
+create table jt 
+
+
+(
+id int auto_increment,
+
+name varchar(60),
+
+age int,
+
+primary key(id)
+
+
+
+
+
+)
+
+
+
+insert into  jt
+
+(
+name ,
+age
+)
+
+values
+
+(
+'emp1',
+17
+
+),
+
+
+
+(
+'emp2',
+17
+
+),
+
+
+(
+'emp3',
+19
+
+
+),
+
+
+
+(
+'emp4',
+18
+
+
+),
+
+(
+'emp5',
+17
+
+
+)
+
+
+
+15.
+
+
+
+create table sports (id int,sports varchar(60))
+
+
+
+insert into  sports
+
+
+
+values
+
+(
+1,
+'c'
+
+),
+
+
+
+(
+3,
+'v'
+
+),
+
+
+(
+5,
+'b'
+
+
+),
+
+
+
+(
+6,
+'c'
+
+
+),
+
+(
+7,
+'v'
+
+
+),
+
+
+
+
+(
+10,
+'b'
+
+
+)
+
+
+
+
+
+insert into  ncc
+
+
+
+values
+
+(
+1,
+'nc'
+
+),
+
+
+
+(
+2,
+'ns'
+
+),
+
+
+(
+3,
+'nc'
+
+
+),
+
+
+
+(
+6,
+'ns'
+
+
+),
+
+(
+8,
+'ns'
+
+
+),
+
+
+
+
+(
+10,
+'nc'
+
+
+)
+
+16.inner join
+
+select * from jt as t1
+inner join 
+sports as t2 on 
+t1.id=t2.id
+
+
+
+
+
+
+17.order by
+
+
+select * from jt
+order by id desc
+
+
+
+
+18.group by
+
+create table sports (id int,name varchar(60),age int,marks varchar(60),sports varchar(60))
+
+
+
+insert into  sports
+
+
+
+values
+
+(
+1,
+'e1',
+17,
+89,
+'c'
+),
+
+
+
+(
+2,
+'e2',
+18,
+95,
+'f'
+
+
+),
+
+
+(
+3,
+'e3',
+19,
+78,
+"b"
+
+
+),
+
+
+
+(
+4,
+'e4',
+18,
+89,
+"c"
+
+
+),
+
+(
+5,
+'e5',
+19,
+77,
+"b"
+
+
+)
+
+
+
+select sports,count(name)  no_ofs
+ from sports
+group by sports
+
+
+
+
+
+select sports,count(name)  no_ofs
+ from sports
+group by sports
+having no_ofs>=1
+
+
+
+19.Ranking
+
+
+
+select name,marks,rank() over(order by marks desc,age desc)
+
+
+from sports
+
+select name,marks,rank() over(order by marks desc,age desc) as std_
+
+
+from sports
+
+row_number
+dense_rank
+rank()
+
+
+20.union
+
+
+  select * from sports
+ union
+ select * from sports
+
+
+
+ 21.intersection
+
+
+  select * from sports
+ intersection
+ select * from sports
+
+
+
+
+
+23.corelated subquery
+
+
+
+
+
+  create table agg(
+
+id int auto_increment,
+
+name varchar(60),
+
+age int,
+
+salary int,
+
+gender varchar(60),
+
+primary	key(id)
+
+
+
+)
+
+
+
+select salary as nth_
+from
+agg as t1
+where
+0 =(
+
+select count(*) from agg as t2
+where
+t1.salary < t2.salary
+)
+
+
+
+
+
+
+
+
+
+
+insert into agg(
+
+
+
+name ,
+
+age ,
+
+salary ,
+
+gender
+
+)
+
+
+values
+(
+'emp1',
+18,
+989,
+'male'
+
+),
+
+
+(
+'emp2',
+17,
+687,
+'female'
+
+),
+
+
+(
+'emp3',
+19,
+796,
+'male'
+
+),
+
+
+
+(
+'emp4',
+18,
+778,
+'male'
+
+),
+
+
+(
+'emp5',
+18,
+746,
+'male'
+
+),
+
+
+(
+'emp6',
+17,
+807,
+'female'
+
+),
+
+(
+'emp7',
+19,
+727,
+'male'
+
+),
+
+(
+'emp8',
+19,
+775,
+'female'
+
+),
+
+(
+'emp9',
+18,
+945,
+'female'
+
+),
+
+(
+'emp10',
+18,
+943,
+'male'
+
+)
+
+
+
+24.
+views
+
+create view view_ as
+select name,age from agg;
+
+
+select * from view_
+
+
+25.
+
+delimiter
+
+delimiter 
+create procedure emp4()
+begin
+
+select id,name from agg ;
+end
+
+
+create index ind on jt(name)
+
+
+
+
+
