@@ -734,7 +734,17 @@ end
 
 create index ind on jt(name)
 
+26.
+foreign key
 
+describe agg;
+create table ffkey (stdid int,stdlan varchar(50),foreign key (stdid) references agg(id)
+);
+describe ffkey;
+insert into ffkey values (5,"telugu"),(4,"english");
+select * from ffkey;
+update agg set id=4 where id=3; 
+delete  from ffkey;
 
 
 
